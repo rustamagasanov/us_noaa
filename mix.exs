@@ -5,6 +5,7 @@ defmodule UsNoaa.Mixfile do
     [app: :us_noaa,
      version: "0.0.1",
      elixir: "~> 1.0",
+     escript: escript_config,
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
@@ -30,5 +31,9 @@ defmodule UsNoaa.Mixfile do
     [
       { :httpoison, "~> 0.7.2" }
     ]
+  end
+
+  defp escript_config do
+    [ main_module: USNOAA.CLI ]
   end
 end
