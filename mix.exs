@@ -34,6 +34,6 @@ defmodule UsNoaa.Mixfile do
   end
 
   defp escript_config do
-    [ main_module: USNOAA.CLI ]
+    [ main_module: UsNoaa.CLI ]
   end
 end

@@ -1,4 +1,6 @@
 defmodule UsNoaa.CLI do
+  require Logger
+
   def main(argv) do
     argv
       |> parse_args
@@ -16,7 +18,11 @@ defmodule UsNoaa.CLI do
     end
   end
 
-  defp process(data) do
+  defp process(:help) do
+    IO.puts """
+    Usage: us_noaa <state_id>
+    """
+    System.halt(0)
   end
 end
 
