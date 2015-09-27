@@ -12,8 +12,8 @@ defmodule UsNoaa.CLI do
 
     case parse do
       { [help: true], _, _ } -> :help
-      { _, [state_id],   _ } -> { }
-      { _, [state_id],   _ } -> { }
+      { _, [state_id],   _ } -> state_id
+      { _, [state_id],   _ } -> state_id
       _                      -> :help
     end
   end
@@ -23,6 +23,12 @@ defmodule UsNoaa.CLI do
     Usage: us_noaa <state_id>
     """
     System.halt(0)
+  end
+
+  defp process(state_id) do
+    IO.inspect state_id
+    state_id
+      |> UsNoaa.XMLFetcher.fetch
   end
 end
 
