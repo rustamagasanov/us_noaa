@@ -1,5 +1,5 @@
 defmodule UsNoaa.XMLFetcher do
-  @site "http://w1.weather.gov/xml/current_obs/"
+  @site Application.get_env(:us_noaa, :site)
 
   def fetch(state_id) do
     IO.inspect HTTPoison.get("#{@site}/#{state_id}.xml")

@@ -2,6 +2,7 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 config :logger, compile_time_purge_level: :info
+config :us_noaa, site: "http://w1.weather.gov/xml/current_obs/"
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
