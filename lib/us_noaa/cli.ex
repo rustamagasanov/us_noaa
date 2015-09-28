@@ -11,10 +11,10 @@ defmodule UsNoaa.CLI do
     parse = OptionParser.parse(argv, switches: [help: :boolean], aliases: [h: :help])
 
     case parse do
-      { [help: true], _, _ } -> :help
-      { _, [state_id],   _ } -> state_id
-      { _, [state_id],   _ } -> state_id
-      _                      -> :help
+      { [help: true], _,      _ } -> :help
+      { _, [state_id],        _ } -> state_id
+      { _, [state_id, count], _ } -> state_id
+      _                           -> :help
     end
   end
 
