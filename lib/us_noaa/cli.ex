@@ -29,6 +29,7 @@ defmodule UsNoaa.CLI do
     IO.inspect state_id
     state_id
       |> UsNoaa.XMLFetcher.fetch
+      |> UsNoaa.XMLParser.parse
   end
 end
 
