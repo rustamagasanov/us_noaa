@@ -26,7 +26,6 @@ defmodule UsNoaa.CLI do
   end
 
   defp process(state_id) do
-    IO.inspect state_id
     state_id
       |> UsNoaa.XMLFetcher.fetch
       |> UsNoaa.XMLParser.parse
