@@ -12,6 +12,11 @@ defmodule UsNoaa.XMLFetcher do
     body
   end
 
+  defp handle_response({ :ok, %HTTPoison.Response{ status_code: 404, body: body } }) do
+    IO.puts "Document doesn't exist(try uppercase?)."
+    System.halt(0)
+  end
+
   defp handle_response({ :error, %HTTPoison.Error{ reason: reason } }) do
     Logger.error "Error #{reason} returned"
   end
