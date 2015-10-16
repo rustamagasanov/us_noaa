@@ -19,6 +19,6 @@ defmodule UsNoaa.XMLParser do
     [credit_text] = xmlElement(credit_element, :content)
     credit = xmlText(credit_text, :value)
 
-    IO.inspect credit
+    IO.inspect to_string(credit)
   end
 end
