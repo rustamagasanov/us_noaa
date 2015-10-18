@@ -19,5 +19,6 @@ defmodule UsNoaa.XMLFetcher do
 
   defp handle_response({ :error, %HTTPoison.Error{ reason: reason } }) do
     Logger.error "Error #{reason} returned"
+    System.halt(0)
   end
 end
