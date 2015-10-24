@@ -12,9 +12,7 @@ defmodule UsNoaa.CLI do
 
     case parse do
       { [help: true], _,      _ } -> :help
-      { _, [state_id],        _ } -> state_id
-      { _, [state_id, count], _ } -> state_id
-      _                           -> :help
+      _                           -> {}
     end
   end
 
