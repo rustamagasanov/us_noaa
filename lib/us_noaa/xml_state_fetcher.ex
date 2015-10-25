@@ -1,8 +1,6 @@
 defmodule UsNoaa.XMLFetcher do
   require Logger
 
-  @site Application.get_env(:us_noaa, :site)
-
   def fetch(state_id) do
     HTTPoison.get("#{@site}/#{state_id}.xml")
       |> handle_response
