@@ -4,7 +4,7 @@ defmodule UsNoaa.CLI do
   def main(argv) do
     argv
       |> parse_args
-      |> process
+      |> get_states
   end
 
   defp parse_args(argv) do
@@ -24,15 +24,15 @@ defmodule UsNoaa.CLI do
   end
 
   defp process do
-    Enum.each(
-      get_states, fn ->
-        UsNoaa.XMLStateFetcher.fetch
-        |> UsNoaa.XMLStateParser.parse
-      end
-    )
+    # Enum.each(
+    #   get_states, fn ->
+        # UsNoaa.XMLStateFetcher.fetch
+        # |> UsNoaa.XMLStateParser.parse
+    #   end
+    # )
   end
 
-  defp get_states do
+  defp get_states(nil) do
     UsNoaa.XMLIndexFetcher.fetch
     |> UsNoaa.XMLIndexParser.parse
   end

@@ -1,4 +1,4 @@
-defmodule XmlIndexFetcher do
+defmodule UsNoaa.XMLIndexFetcher do
   @site Application.get_env(:us_noaa, :site)
 
   def fetch do
@@ -6,7 +6,7 @@ defmodule XmlIndexFetcher do
     |> handle_response
   end
 
-  def handle_response({ :ok, %HTTPoison.Response{ status_code: 200, body: body } }) do
+  defp handle_response({ :ok, %HTTPoison.Response{ status_code: 200, body: body } }) do
     body
   end
 
