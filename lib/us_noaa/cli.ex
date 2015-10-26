@@ -3,8 +3,8 @@ defmodule UsNoaa.CLI do
 
   def main(argv) do
     argv
-      |> parse_args
-      |> get_states
+    |> parse_args
+    |> process
   end
 
   defp parse_args(argv) do
@@ -12,6 +12,7 @@ defmodule UsNoaa.CLI do
 
     case parse do
       { [help: true], _,      _ } -> :help
+      {}                          -> nil
       _                           -> nil
     end
   end
@@ -23,16 +24,16 @@ defmodule UsNoaa.CLI do
     System.halt(0)
   end
 
-  defp process do
-    # Enum.each(
-    #   get_states, fn ->
-        # UsNoaa.XMLStateFetcher.fetch
-        # |> UsNoaa.XMLStateParser.parse
-    #   end
-    # )
+  defp process(nil) do
+    Enum.each(
+      get_states, fn(state) ->
+        IO.inspect UsNoaa.XMLStateFetcher.fetch(state)
+        |> UsNoaa.XMLStateParser.parse
+      end
+    )
   end
 
-  defp get_states(nil) do
+  defp get_states do
     UsNoaa.XMLIndexFetcher.fetch
     |> UsNoaa.XMLIndexParser.parse
   end

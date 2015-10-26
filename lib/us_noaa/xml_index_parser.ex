@@ -15,12 +15,12 @@ defmodule UsNoaa.XMLIndexParser do
 
   defp get_data({ xml, _rest }) do
     elements = :xmerl_xpath.string('/wx_station_index//station/xml_url', xml)
-    Enum.each(
+    Enum.map(
       elements,
       fn(element) ->
         [text] = xmlElement(element, :content)
         value  = xmlText(text, :value)
-        IO.inspect to_string(value)
+        to_string(value)
       end
     )
   end
