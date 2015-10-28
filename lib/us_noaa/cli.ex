@@ -25,8 +25,10 @@ defmodule UsNoaa.CLI do
   end
 
   defp process(nil) do
-    Enum.each(
-      get_states, fn(state) ->
+    get_states
+    |> Enum.take(5)
+    |> Enum.each(
+      fn(state) ->
         IO.inspect UsNoaa.XMLStateFetcher.fetch(state)
         |> UsNoaa.XMLStateParser.parse
       end
